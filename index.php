@@ -1,13 +1,14 @@
 <html>
     <head>
         <title>DORM Manangement System</title>
+        
         <link rel = "stylesheet" type="text/css" href="css/home.css">
     </head>
-    <body>
+    <div id="body">
         <center>
             <br/>
             <div id ="head1">
-            <h1>Welcome to DORM management system</h1>
+                <h1>Welcome to DORM management system</h1>
             </div>
         </center>
         <div id="form">
@@ -22,5 +23,5 @@
             </a>
             </div>
         </div>
-    </body>
+</div>
 </html>
