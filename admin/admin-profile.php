@@ -3,7 +3,6 @@ session_start();
 include('includes/config.php');
 include('includes/checklogin.php');
 check_login();
-//code for update email id
 if($_POST['update'])
 {
 $email=$_POST['emailid'];
@@ -61,7 +60,7 @@ $chngpwd1->bind_param('ssi',$np,$udate,$ai);
 	<link rel="stylesheet" href="css/bootstrap-select.css">
 	<link rel="stylesheet" href="css/fileinput.min.css">
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style1.css">
 <script type="text/javascript" src="js/jquery-1.11.3-jquery.min.js"></script>
 <script type="text/javascript" src="js/validation.min.js"></script>
 <script type="text/javascript">
