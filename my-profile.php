@@ -1,26 +1,26 @@
 <?php
-session_start();
-include('includes/config.php');
-date_default_timezone_set('Asia/Kolkata');
-include('includes/checklogin.php');
-check_login();
-$aid=$_SESSION['id'];
-if(isset($_POST['update']))
-{
+	session_start();
+	include('includes/config.php');
+	date_default_timezone_set('Asia/Kolkata');
+	include('includes/checklogin.php');
+	check_login();
+	$aid=$_SESSION['id'];
+	if(isset($_POST['update']))
+	{
 
-$regno=$_POST['regno'];
-$fname=$_POST['fname'];
-$mname=$_POST['mname'];
-$lname=$_POST['lname'];
-$gender=$_POST['gender'];
-$contactno=$_POST['contact'];
-$udate = date('d-m-Y h:i:s', time());
-$query="update  userRegistration set regNo=?,firstName=?,middleName=?,lastName=?,gender=?,contactNo=?,updationDate=? where id=?";
-$stmt = $mysqli->prepare($query);
-$rc=$stmt->bind_param('sssssisi',$regno,$fname,$mname,$lname,$gender,$contactno,$udate,$aid);
-$stmt->execute();
-echo"<script>alert('Profile updated Succssfully');</script>";
-}
+	$regno=$_POST['regno'];
+	$fname=$_POST['fname'];
+	$mname=$_POST['mname'];
+	$lname=$_POST['lname'];
+	$gender=$_POST['gender'];
+	$contactno=$_POST['contact'];
+	$udate = date('d-m-Y h:i:s', time());
+	$query="update  userRegistration set regNo=?,firstName=?,middleName=?,lastName=?,gender=?,contactNo=?,updationDate=? where id=?";
+	$stmt = $mysqli->prepare($query);
+	$rc=$stmt->bind_param('sssssisi',$regno,$fname,$mname,$lname,$gender,$contactno,$udate,$aid);
+	$stmt->execute();
+	echo"<script>alert('Profile updated Succssfully');</script>";
+	}
 ?>
 
 <!doctype html>
@@ -40,7 +40,7 @@ echo"<script>alert('Profile updated Succssfully');</script>";
 	<link rel="stylesheet" href="css/bootstrap-select.css">
 	<link rel="stylesheet" href="css/fileinput.min.css">
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style1.css">
 <script type="text/javascript" src="js/jquery-1.11.3-jquery.min.js"></script>
 <script type="text/javascript" src="js/validation.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -64,16 +64,16 @@ return true;
 		<div class="content-wrapper">
 			<div class="container-fluid">
 	<?php	
-$aid=$_SESSION['id'];
-	$ret="select * from userregistration where id=?";
-		$stmt= $mysqli->prepare($ret) ;
-	 $stmt->bind_param('i',$aid);
-	 $stmt->execute() ;//ok
-	 $res=$stmt->get_result();
-	 //$cnt=1;
-	   while($row=$res->fetch_object())
-	  {
-	  	?>	
+		$aid=$_SESSION['id'];
+			$ret="select * from userregistration where id=?";
+				$stmt= $mysqli->prepare($ret) ;
+			$stmt->bind_param('i',$aid);
+			$stmt->execute() ;
+			$res=$stmt->get_result();
+			
+			while($row=$res->fetch_object())
+			{
+				?>	
 				<div class="row">
 					<div class="col-md-12">
 						<h2 class="page-title"><?php echo $row->firstName;?>'s&nbsp;Profile </h2>
@@ -83,7 +83,7 @@ $aid=$_SESSION['id'];
 								<div class="panel panel-primary">
 									<div class="panel-heading">
 
-Last Updation date : &nbsp; <?php echo $row->updationDate;?> 
+
 </div>
 									
 
@@ -199,18 +199,18 @@ Last Updation date : &nbsp; <?php echo $row->updationDate;?>
 	<script>
 function checkAvailability() {
 
-$("#loaderIcon").show();
-jQuery.ajax({
-url: "check_availability.php",
-data:'emailid='+$("#email").val(),
-type: "POST",
-success:function(data){
-$("#user-availability-status").html(data);
-$("#loaderIcon").hide();
-},
-error:function (){}
-});
-}
+	$("#loaderIcon").show();
+	jQuery.ajax({
+		url: "check_availability.php",
+		data:'emailid='+$("#email").val(),
+		type: "POST",
+		success:function(data){
+			$("#user-availability-status").html(data);
+			$("#loaderIcon").hide();
+		},
+	error:function (){}
+	});
+	}
 </script>
 
 </html>
