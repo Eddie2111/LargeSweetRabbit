@@ -1,20 +1,21 @@
 <?php
-session_start();
-include('includes/config.php');
-include('includes/checklogin.php');
-check_login();
+	session_start();
+	include('includes/config.php');
+	include('includes/checklogin.php');
+	check_login();
 
-if(isset($_GET['del']))
-{
-	$id=intval($_GET['del']);
-	$adn="delete from rooms where id=?";
-		$stmt= $mysqli->prepare($adn);
-		$stmt->bind_param('i',$id);
-        $stmt->execute();
-        $stmt->close();	   
-        echo "<script>alert('Data Deleted');</script>" ;
-}
+	if(isset($_GET['del']))
+	{
+		$id=intval($_GET['del']);
+		$adn="delete from rooms where id=?";
+			$stmt= $mysqli->prepare($adn);
+			$stmt->bind_param('i',$id);
+			$stmt->execute();
+			$stmt->close();	   
+			echo "<script>alert('Data Deleted');</script>" ;
+	}
 ?>
+
 <!doctype html>
 <html lang="en" class="no-js">
 
@@ -25,6 +26,7 @@ if(isset($_GET['del']))
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
+	
 	<title>Manage Rooms</title>
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -33,10 +35,11 @@ if(isset($_GET['del']))
 	<link rel="stylesheet" href="css/bootstrap-select.css">
 	<link rel="stylesheet" href="css/fileinput.min.css">
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style1.css">
 </head>
 
 <body>
+	
 	<?php include('includes/header.php');?>
 
 	<div class="ts-main-content">
@@ -45,6 +48,7 @@ if(isset($_GET['del']))
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12">
+					<br/><br/>
 						<h2 class="page-title">Manage Rooms</h2>
 						<div class="panel panel-default">
 							<div class="panel-heading">All Room Details</div>
@@ -62,17 +66,7 @@ if(isset($_GET['del']))
 											<th>Action</th>
 										</tr>
 									</thead>
-									<tfoot>
-										<tr>
-											<th>Sno.</th>
-											<th>Seater</th>
-											<th>Room No.</th>
-										
-											<th>Fees (PM) </th>
-											<th>Posting Date  </th>
-											<th>Action</th>
-										</tr>
-									</tfoot>
+									
 									<tbody>
 <?php	
 $aid=$_SESSION['id'];
