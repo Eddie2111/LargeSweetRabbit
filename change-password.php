@@ -5,7 +5,7 @@ date_default_timezone_set('Asia/Kolkata');
 include('includes/checklogin.php');
 check_login();
 $ai=$_SESSION['id'];
-// code for change password
+
 if(isset($_POST['changepwd']))
 {
   $op=$_POST['oldpassword'];
@@ -50,7 +50,7 @@ $chngpwd1->bind_param('ssi',$np,$udate,$ai);
 	<link rel="stylesheet" href="css/bootstrap-select.css">
 	<link rel="stylesheet" href="css/fileinput.min.css">
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style1.css">
 <script type="text/javascript" src="js/jquery-1.11.3-jquery.min.js"></script>
 <script type="text/javascript" src="js/validation.min.js"></script>
 <script type="text/javascript">
@@ -84,21 +84,14 @@ return true;
 	
 								<div class="col-md-10">
 								<div class="panel panel-default">
-									<div class="panel-heading">
-<?php $result ="SELECT passUdateDate FROM userregistration WHERE id=?";
-$stmt = $mysqli->prepare($result);
-$stmt->bind_param('i',$ai);
-$stmt->execute();
-$stmt -> bind_result($result);
-$stmt -> fetch(); ?>
-
-									Last Updation Date:&nbsp;<?php echo $result; ?> </div>
+									<div class="panel-heading"></div>
 									<div class="panel-body">
+										
 				<form method="post" class="form-horizontal" name="changepwd" id="change-pwd" onSubmit="return valid();">
     <?php            if(isset($_POST['changepwd']))
 { ?>
 											<p style="color: red"><?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg']=""); ?></p>
-                                            <?php } ?>
+                                            <?php } ?>											
 											<div class="hr-dashed"></div>
 											<div class="form-group">
 												<label class="col-sm-4 control-label">old Password </label>
