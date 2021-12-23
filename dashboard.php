@@ -1,9 +1,8 @@
 <?php
-session_start();
-include('includes/config.php');
-include('includes/checklogin.php');
-check_login();
-
+	session_start();
+	include('includes/config.php');
+	include('includes/checklogin.php');
+	check_login();
 ?>
 <!doctype html>
 <html lang="en" class="no-js">
@@ -15,8 +14,7 @@ check_login();
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
-
-	<title>DashBoard</title>
+	<title> DashBoard </title>
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
@@ -24,7 +22,7 @@ check_login();
 	<link rel="stylesheet" href="css/bootstrap-select.css">
 	<link rel="stylesheet" href="css/fileinput.min.css">
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style1.css">
 
 
 </head>
@@ -39,7 +37,7 @@ check_login();
 
 				<div class="row">
 					<div class="col-md-12">
-
+						<br/>
 						<h2 class="page-title">Dashboard</h2>
 
 						<div class="row">
@@ -49,10 +47,7 @@ check_login();
 										<div class="panel panel-default">
 											<div class="panel-body bk-primary text-light">
 												<div class="stat-panel text-center">
-
-
-
-													<div class="stat-panel-number h1 ">My Profile</div>
+													<a href="my-profile.php"><div class="stat-panel-number h1 ">My Profile</div></a>
 
 												</div>
 											</div>
@@ -64,11 +59,11 @@ check_login();
 											<div class="panel-body bk-success text-light">
 												<div class="stat-panel text-center">
 
-												<div class="stat-panel-number h1 ">My Room</div>
-
+												<a href = "room-details.php"><div class="stat-panel-number h1 ">My Room</div></a>
 												</div>
 											</div>
-											<a href="room-details.php" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="room-details.php" class="block-anchor panel-footer">See All  <i class="fa fa-arrow-right"></i></a>
+											
 										</div>
 									</div>
 
@@ -124,9 +119,7 @@ check_login();
 
 </body>
 
-<div class="foot"><footer>
-<p> Subscribe to  <a href="https://youtube.com/technicalbabaji1" target="_blank">Technical Babaji</p>
-</footer> </div>
+
 
 
 <style> .foot{text-align: center; border: 1px solid black;}</style>
