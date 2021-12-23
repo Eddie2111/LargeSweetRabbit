@@ -4,12 +4,12 @@
 *   FOR RESPONSIVENESS      *
 ****************************/
 ::selection {
-  background: #4f5362;
+  background: #3f69ff;
   /* WebKit/Blink Browsers */
   color: #fff;
 }
 ::-moz-selection {
-  background: #4f5362;
+  background: #4268f0;
   /* Gecko Browsers */
   color: #fff;
 }
@@ -39,17 +39,19 @@ body {
   font-size: 1em;
 }
 a {
-  color: #37a6c4;
+  color: #111111;
 }
 a:hover {
   text-decoration: none;
-  color: #5db9d1;
+  transition: 0.3s ease-in-out;
+  color: #0500ff;
 }
 /****************************
 *      Buttons        *
 ****************************/
 .btn {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
 }
 .btn i {
   position: relative;
@@ -94,10 +96,16 @@ a:hover {
 *      Background Colors        *
 ****************************/
 .bk-primary {
-  background: #325d88;
+  background: #3e81c4;
+}
+.bk-primary:hover {
+  background: #4aa5ff;
 }
 .bk-success {
-  background: #93c54b;
+  background: #92c945;
+}
+.bk-success:hover {
+  background: #b5f856;
 }
 .bk-warning {
   background: #f47c3c;
@@ -545,7 +553,7 @@ li {
   border-bottom: 1px solid #f0f0f0;
 }
 .brand {
-  background: #3e454c;
+  background-image: linear-gradient(to right, rgb(158, 158, 158) , #ffffff);
   position: relative;
   z-index: 3;
   position: fixed;
@@ -629,6 +637,7 @@ li {
     display: block;
   }
 }
+
 .ts-sidebar::-webkit-scrollbar-track {
   background-color: transparent;
 }
@@ -637,10 +646,10 @@ li {
   background-color: transparent;
 }
 .ts-sidebar::-webkit-scrollbar-thumb {
-  background-color: #b4b4b4;
+  background-image: linear-gradient(to right, rgb(99, 6, 91) , #b6b6fd);
 }
 .ts-sidebar {
-  background: #2c3136;
+  background-image: linear-gradient(to right, rgb(255, 114, 243) , #b6b6fd);
   max-height: 0;
   transition: max-height 0.3s;
   overflow: hidden;
@@ -656,10 +665,10 @@ li {
 }
 .ts-sidebar .ts-sidebar-search {
   width: 100%;
-  background: #25292a;
+  background-image: linear-gradient(to right, rgb(255, 114, 243) , #b6b6fd);
   border: none;
   padding: 10px 15px;
-  color: #fff;
+  color: rgb(31, 30, 30);
 }
 @media only screen and (min-width: 992px) {
   .ts-sidebar .ts-profile-nav {
@@ -673,7 +682,8 @@ li {
   }
 }
 .ts-sidebar-menu .ts-label {
-  color: #585c64;
+  color: #0c0c0c;
+  background-image: linear-gradient(to right, rgb(255, 114, 243) , #b6b6fd);
   font-weight: bold;
   padding: 8px 15px;
   text-transform: uppercase;
@@ -683,21 +693,22 @@ li {
 }
 .ts-sidebar-menu a {
   display: block;
+  background-image: linear-gradient(to right, rgb(255, 114, 243) , #b6b6fd);
   text-decoration: none;
   padding: 12px 15px;
-  color: #fff;
+  color: rgb(16, 16, 16);
 }
 .ts-sidebar-menu li {
   position: relative;
 }
 .ts-sidebar-menu li i {
-  color: #585c64;
+  background-image: linear-gradient(to right, rgb(255, 114, 243) , #b6b6fd);
   margin-right: 10px;
 }
 .ts-sidebar-menu li ul {
   display: block;
   background: rgba(255, 0, 0, 0.12);
-  background: rgba(0, 0, 0, 0.32);
+  background-image: linear-gradient(to right, rgb(255, 114, 243) , #b6b6fd);
   max-height: 0;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -707,10 +718,10 @@ li {
   max-height: 2000px;
 }
 .ts-sidebar-menu .open > a {
-  background: rgba(51, 56, 62, 0.35);
+  background-image: linear-gradient(to right, rgb(255, 114, 243) , rgb(255, 114, 243));
 }
 .ts-sidebar-menu > .open > a {
-  background: #33383e;
+  background-image: linear-gradient(to right, rgb(255, 114, 243) , rgb(255, 114, 243));
   border-left: 3px solid #37a6c4;
 }
 .ts-sidebar-menu .open > .more i {
