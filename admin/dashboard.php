@@ -24,7 +24,7 @@ check_login();
 	<link rel="stylesheet" href="css/bootstrap-select.css">
 	<link rel="stylesheet" href="css/fileinput.min.css">
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style1.css">
 
 
 </head>
@@ -39,7 +39,7 @@ check_login();
 
 				<div class="row">
 					<div class="col-md-12">
-
+<br/><br/>
 						<h2 class="page-title">Dashboard</h2>
 
 						<div class="row">
@@ -82,26 +82,7 @@ $stmt1->close();
 													<div class="stat-panel-title text-uppercase">Total Rooms </div>
 												</div>
 											</div>
-											<a href="manage-rooms.php" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="panel panel-default">
-											<div class="panel-body bk-info text-light">
-												<div class="stat-panel text-center">
-<?php
-$result2 ="SELECT count(*) FROM courses ";
-$stmt2 = $mysqli->prepare($result2);
-$stmt2->execute();
-$stmt2->bind_result($count2);
-$stmt2->fetch();
-$stmt2->close();
-?>
-													<div class="stat-panel-number h1 "><?php echo $count2;?></div>
-													<div class="stat-panel-title text-uppercase">Total Courses</div>
-												</div>
-											</div>
-											<a href="manage-courses.php" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="manage-rooms.php" class="block-anchor panel-footer">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 
@@ -120,7 +101,7 @@ $stmt2->close();
 		</div>
 	</div>
 
-	<!-- Loading Scripts -->
+	
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap-select.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -135,7 +116,7 @@ $stmt2->close();
 
 	window.onload = function(){
 
-		// Line chart from swirlData for dashReport
+		
 		var ctx = document.getElementById("dashReport").getContext("2d");
 		window.myLine = new Chart(ctx).Line(swirlData, {
 			responsive: true,
@@ -144,11 +125,11 @@ $stmt2->close();
 			multiTooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
 		});
 
-		// Pie Chart from doughutData
+		
 		var doctx = document.getElementById("chart-area3").getContext("2d");
 		window.myDoughnut = new Chart(doctx).Pie(doughnutData, {responsive : true});
 
-		// Dougnut Chart from doughnutData
+		
 		var doctx = document.getElementById("chart-area4").getContext("2d");
 		window.myDoughnut = new Chart(doctx).Doughnut(doughnutData, {responsive : true});
 
@@ -157,9 +138,7 @@ $stmt2->close();
 
 </body>
 
-<div class="foot"><footer>
-<p> Subscribe to  <a href="https://youtube.com/technicalbabaji1" target="_blank">Technical Babaji</p>
-</footer> </div>
+
 
 
 <style> .foot{text-align: center; border: 1px solid black;}</style>
