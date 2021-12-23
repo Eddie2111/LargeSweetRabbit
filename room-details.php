@@ -1,8 +1,8 @@
 <?php
-session_start();
-include('includes/config.php');
-include('includes/checklogin.php');
-check_login();
+	session_start();
+	include('includes/config.php');
+	include('includes/checklogin.php');
+	check_login();
 ?>
 <!doctype html>
 <html lang="en" class="no-js">
@@ -22,7 +22,7 @@ check_login();
 	<link rel="stylesheet" href="css/bootstrap-select.css">
 	<link rel="stylesheet" href="css/fileinput.min.css">
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style1.css">
 <script language="javascript" type="text/javascript">
 var popUpWin=0;
 function popUpWindow(URLStr, left, top, width, height)
@@ -47,6 +47,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12">
+						<br/>
 						<h2 class="page-title">Rooms Details</h2>
 						<div class="panel panel-default">
 							<div class="panel-heading">All Room Details</div>
@@ -56,23 +57,23 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 									
 									<tbody>
 <?php	
-$aid=$_SESSION['login'];
-	$ret="select * from registration where emailid=?";
-$stmt= $mysqli->prepare($ret) ;
-$stmt->bind_param('s',$aid);
-$stmt->execute() ;
-$res=$stmt->get_result();
-$cnt=1;
-while($row=$res->fetch_object())
-	  {
-	  	?>
+	$aid=$_SESSION['login'];
+		$ret="select * from registration where emailid=?";
+	$stmt= $mysqli->prepare($ret) ;
+	$stmt->bind_param('s',$aid);
+	$stmt->execute() ;
+	$res=$stmt->get_result();
+	$cnt=1;
+	while($row=$res->fetch_object())
+		{
+?>
 
 <tr>
 <td colspan="4"><h4>Room Realted Info</h4></td>
-<td><a href="javascript:void(0);"  onClick="popUpWindow('http://localhost/hostel/full-profile.php?id=<?php echo $row->emailid;?>');" title="View Full Details">Print Data</a></td>
+
 </tr>
 <tr>
-<td colspan="6"><b>Reg no. :<?php echo $row->postingDate;?></b></td>
+<td colspan="6"><b>Registration Date: <?php echo $row->postingDate;?></b></td>
 </tr>
 
 
@@ -122,7 +123,7 @@ echo $dr*$fpm;
 </tr>
 
 <tr>
-<td><b>Reg No. :</b></td>
+<td><b>Reg Number:</b></td>
 <td><?php echo $row->regno;?></td>
 <td><b>Full Name :</b></td>
 <td><?php echo $row->firstName;?><?php echo $row->middleName;?><?php echo $row->lastName;?></td>
@@ -142,7 +143,7 @@ echo $dr*$fpm;
 
 
 <tr>
-<td><b>Emergency Contact No. :</b></td>
+<td><b>Emergency Contact Number:</b></td>
 <td><?php echo $row->egycontactno;?></td>
 <td><b>Guardian Name :</b></td>
 <td><?php echo $row->guardianName;?></td>
@@ -151,7 +152,7 @@ echo $dr*$fpm;
 </tr>
 
 <tr>
-<td><b>Guardian Contact No. :</b></td>
+<td><b>Guardian Contact Number:</b></td>
 <td colspan="6"><?php echo $row->guardianContactno;?></td>
 </tr>
 
@@ -162,7 +163,7 @@ echo $dr*$fpm;
 <td><b>Correspondense Address</b></td>
 <td colspan="2">
 <?php echo $row->corresAddress;?><br />
-<?php echo $row->corresCIty;?>, <?php echo $row->corresPincode;?><br />
+<?php echo $row->corresCIty;?> <br />
 <?php echo $row->corresState;?>
 
 
@@ -170,7 +171,7 @@ echo $dr*$fpm;
 <td><b>Permanent Address</b></td>
 <td colspan="2">
 <?php echo $row->pmntAddress;?><br />
-<?php echo $row->pmntCity;?>, <?php echo $row->pmntPincode;?><br />
+<?php echo $row->pmntCity;?> <br />
 <?php echo $row->pmnatetState;?>	
 
 </td>
