@@ -15,10 +15,7 @@ $stmt=$mysqli->prepare("SELECT username,email,password,id FROM admin WHERE (user
 				$ldate=date('d/m/Y h:i:s', time());
 				if($rs)
 				{
-                //  $insert="INSERT into admin(adminid,ip)VALUES(?,?)";
-   // $stmtins = $mysqli->prepare($insert);
-   // $stmtins->bind_param('sH',$id,$uip);
-    //$res=$stmtins->execute();
+
 					header("location:admin-profile.php");
 				}
 
@@ -47,7 +44,7 @@ $stmt=$mysqli->prepare("SELECT username,email,password,id FROM admin WHERE (user
 	<link rel="stylesheet" href="css/bootstrap-select.css">
 	<link rel="stylesheet" href="css/fileinput.min.css">
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style1.css">
 </head
 <body>
 
@@ -56,7 +53,11 @@ $stmt=$mysqli->prepare("SELECT username,email,password,id FROM admin WHERE (user
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
-						<h1 class="text-center text-bold text-light mt-4x">Dorm Management System</h1>
+						<h1 class="text-center text-bold text-light mt-4x"><a href = "../index.php">
+						
+						Dorm Management System
+						
+						</a></h1>
 						<div class="well row pt-2x pb-3x bk-light">
 							<div class="col-md-8 col-md-offset-2">
 
@@ -68,7 +69,10 @@ $stmt=$mysqli->prepare("SELECT username,email,password,id FROM admin WHERE (user
 
 
 									<input type="submit" name="login" class="btn btn-primary btn-block" value="login" >
-								</form>
+								</form><br/>
+								<center>
+								<p>Student? <a href = "../login.php">Login</a> or <a href="../registration.php">Register</a></p>
+								</center>
 							</div>
 						</div>
 					</div>
