@@ -1,41 +1,41 @@
 <?php
-session_start();
-include('includes/config.php');
-if(isset($_POST['login']))
-{
-$email=$_POST['email'];
-$password=$_POST['password'];
-$stmt=$mysqli->prepare("SELECT email,password,id FROM userregistration WHERE email=? and password=? ");
-				$stmt->bind_param('ss',$email,$password);
-				$stmt->execute();
-				$stmt -> bind_result($email,$password,$id);
-				$rs=$stmt->fetch();
-				$stmt->close();
-				$_SESSION['id']=$id;
-				$_SESSION['login']=$email;
-				$uip=$_SERVER['REMOTE_ADDR'];
-				$ldate=date('d/m/Y h:i:s', time());
-				if($rs)
-				{
-             $uid=$_SESSION['id'];
-             $uemail=$_SESSION['login'];
-$ip=$_SERVER['REMOTE_ADDR'];
-$geopluginURL='http://www.geoplugin.net/php.gp?ip='.$ip;
-$addrDetailsArr = unserialize(file_get_contents($geopluginURL));
-$city = $addrDetailsArr['geoplugin_city'];
-$country = $addrDetailsArr['geoplugin_countryName'];
-$log="insert into userLog(userId,userEmail,userIp,city,country) values('$uid','$uemail','$ip','$city','$country')";
-$mysqli->query($log);
-if($log)
-{
-header("location:dashboard.php");
+	session_start();
+	include('includes/config.php');
+	if(isset($_POST['login']))
+	{
+	$email=$_POST['email'];
+	$password=$_POST['password'];
+	$stmt=$mysqli->prepare("SELECT email,password,id FROM userregistration WHERE email=? and password=? ");
+					$stmt->bind_param('ss',$email,$password);
+					$stmt->execute();
+					$stmt -> bind_result($email,$password,$id);
+					$rs=$stmt->fetch();
+					$stmt->close();
+					$_SESSION['id']=$id;
+					$_SESSION['login']=$email;
+					$uip=$_SERVER['REMOTE_ADDR'];
+					$ldate=date('d/m/Y h:i:s', time());
+					if($rs)
+					{
+		     $uid=$_SESSION['id'];
+		     $uemail=$_SESSION['login'];
+	$ip=$_SERVER['REMOTE_ADDR'];
+	$geopluginURL='http://www.geoplugin.net/php.gp?ip='.$ip;
+	$addrDetailsArr = unserialize(file_get_contents($geopluginURL));
+	$city = $addrDetailsArr['geoplugin_city'];
+	$country = $addrDetailsArr['geoplugin_countryName'];
+	$log="insert into userLog(userId,userEmail,userIp,city,country) values('$uid','$uemail','$ip','$city','$country')";
+	$mysqli->query($log);
+	if($log)
+	{
+	header("location:dashboard.php");
+					}
+	}
+					else
+					{
+						echo "<script>alert('Invalid Username/Email or password');</script>";
+					}
 				}
-}
-				else
-				{
-					echo "<script>alert('Invalid Username/Email or password');</script>";
-				}
-			}
 				?>
 
 <!doctype html>
@@ -55,7 +55,7 @@ header("location:dashboard.php");
 	<link rel="stylesheet" href="css/bootstrap-select.css">
 	<link rel="stylesheet" href="css/fileinput.min.css">
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style1.css">
 <script type="text/javascript" src="js/jquery-1.11.3-jquery.min.js"></script>
 <script type="text/javascript" src="js/validation.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -92,10 +92,12 @@ function valid()
 									<input type="text" placeholder="Email" name="email" class="form-control mb">
 									<label for="" class="text-uppercase text-sm">Password</label>
 									<input type="password" placeholder="Password" name="password" class="form-control mb">
-									
-
 									<input type="submit" name="login" class="btn btn-primary btn-block" value="login" >
 								</form>
+								<center>
+									<br/>
+								<p>No account? <a href = "registration.php">Register Today</a></p>
+								</center>
 							</div>
 						</div>
 						<div class="text-center text-light">
