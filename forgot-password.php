@@ -1,25 +1,25 @@
 <?php
-session_start();
-include('includes/config.php');
-if(isset($_POST['login']))
-{
-$email=$_POST['email'];
-$contact=$_POST['contact'];
-$stmt=$mysqli->prepare("SELECT email,contactNo,password FROM userregistration WHERE (email=? && contactNo=?) ");
-				$stmt->bind_param('ss',$email,$contact);
-				$stmt->execute();
-				$stmt -> bind_result($username,$email,$password);
-				$rs=$stmt->fetch();
-				if($rs)
-				{
-				$pwd=$password;				
-				}
+	session_start();
+	include('includes/config.php');
+	if(isset($_POST['login']))
+	{
+	$email=$_POST['email'];
+	$contact=$_POST['contact'];
+	$stmt=$mysqli->prepare("SELECT email,contactNo,password FROM userregistration WHERE (email=? && contactNo=?) ");
+					$stmt->bind_param('ss',$email,$contact);
+					$stmt->execute();
+					$stmt -> bind_result($username,$email,$password);
+					$rs=$stmt->fetch();
+					if($rs)
+					{
+					$pwd=$password;				
+					}
 
-				else
-				{
-					echo "<script>alert('Invalid Email/Contact no or password');</script>";
+					else
+					{
+						echo "<script>alert('Invalid Email/Contact no or password');</script>";
+					}
 				}
-			}
 				?>
 
 <!doctype html>
@@ -31,7 +31,7 @@ $stmt=$mysqli->prepare("SELECT email,contactNo,password FROM userregistration WH
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>User Forgot Password</title>
+	<title>Retrieve Password</title>
 
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -40,7 +40,7 @@ $stmt=$mysqli->prepare("SELECT email,contactNo,password FROM userregistration WH
 	<link rel="stylesheet" href="css/bootstrap-select.css">
 	<link rel="stylesheet" href="css/fileinput.min.css">
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style1.css">
 </head
 <body>
 	
@@ -49,12 +49,12 @@ $stmt=$mysqli->prepare("SELECT email,contactNo,password FROM userregistration WH
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
-						<h1 class="text-center text-bold text-light mt-4x">Forgot Password</h1>
+						<h1 class="text-center text-bold text-light mt-4x"><font color="black">Help us identify your account</font></h1>
 						<div class="well row pt-2x pb-3x bk-light">
 							<div class="col-md-8 col-md-offset-2">
 							<?php if(isset($_POST['login']))
 { ?>
-					<p>Yuor Password is <?php echo $pwd;?><br> Change the Password After login</p>
+					<p>Password is <?php echo $pwd;?><br> Change the password now</p>
 					<?php }  ?>
 								<form action="" class="mt" method="post">
 									<label for="" class="text-uppercase text-sm">Your Email</label>
@@ -68,7 +68,7 @@ $stmt=$mysqli->prepare("SELECT email,contactNo,password FROM userregistration WH
 							</div>
 						</div>
 						<div class="text-center text-light">
-							<a href="index.php" class="text-light">Sign in?</a>
+							<a href="login.php" class="text-light"><font color="black">Back to Login</font></a>
 						</div>
 					</div>
 				</div>
