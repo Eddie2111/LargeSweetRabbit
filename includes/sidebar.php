@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../hostel.css">
+
 <nav class="ts-sidebar">
 			<ul class="ts-sidebar-menu">
 			

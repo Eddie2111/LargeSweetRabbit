@@ -697,6 +697,12 @@ li {
   text-decoration: none;
   padding: 12px 15px;
   color: rgb(16, 16, 16);
+  border-bottom:0.5px solid rgb(202, 202, 202);
+  
+}
+.ts-sidebar-menu a:hover{
+  transition: 0.3s ease-in-out;
+  border-bottom:0.5px solid rgb(0, 166, 255);
 }
 .ts-sidebar-menu li {
   position: relative;
