@@ -1,12 +1,13 @@
 <?php
 session_start();
-		include("includes/config.php");
-		$mysql_hostname = "localhost";
-		$mysql_user = "root";
-		$mysql_password = "";
-		$mysql_database = "hostel";
-		$prefix = "";
-		$bd = mysqli_connect($mysql_hostname, $mysql_user, $mysql_password,$mysql_database);
+//include("includes/config.php");
+$mysql_hostname = "localhost";
+$mysql_user = "root";
+$mysql_password = "";
+$mysql_database = "hostel";
+$prefix = "";
+$bd = mysql_connect($mysql_hostname, $mysql_user, $mysql_password) or die("Could not connect database");
+mysql_select_db($mysql_database, $bd) or die("Could not select database");
 ?>
 <script language="javascript" type="text/javascript">
 function f2()
@@ -30,9 +31,8 @@ window.print();
 <body>
 <table width="100%" border="0">
 <?php 
-		
-		 $ret= mysqli_query($bd,"SELECT * FROM registration where id = '".$_GET['id']."'");
-			while($row=mysqli_fetch_array($ret))
+		 $ret= mysql_query("SELECT * FROM registration where emailid = '".$_GET['id']."'");
+			while($row=mysql_fetch_array($ret))
 			{
 			?>
 			<tr>

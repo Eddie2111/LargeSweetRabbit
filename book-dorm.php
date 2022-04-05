@@ -1,45 +1,44 @@
 <?php
-	session_start();
-	include('includes/config.php');
-	include('includes/checklogin.php');
-	check_login();
-	//code for registration
-	if(isset($_POST['submit']))
-	{
-	$roomno=$_POST['room'];
-	$seater=$_POST['seater'];
-	$feespm=$_POST['fpm'];
-	$foodstatus=$_POST['foodstatus'];
-	$stayfrom=$_POST['stayf'];
-	$duration=$_POST['duration'];
-	$course=$_POST['course'];
-	$regno=$_POST['regno'];
-	$fname=$_POST['fname'];
-	$mname=$_POST['mname'];
-	$lname=$_POST['lname'];
-	$gender=$_POST['gender'];
-	$contactno=$_POST['contact'];
-	$emailid=$_POST['email'];
-	$emcntno=$_POST['econtact'];
-	$gurname=$_POST['gname'];
-	$gurrelation=$_POST['grelation'];
-	$gurcntno=$_POST['gcontact'];
-	$caddress=$_POST['address'];
-	$ccity=$_POST['city'];
-	$cstate=$_POST['state'];
-	$cpincode=$_POST['pincode'];
-	$paddress=$_POST['paddress'];
-	$pcity=$_POST['pcity'];
-	$pstate=$_POST['pstate'];
-	$ppincode=$_POST['ppincode'];
-	$query="insert into  registration(roomno,seater,feespm,foodstatus,stayfrom,duration,course,regno,firstName,middleName,lastName,gender,contactno,emailid,egycontactno,guardianName,guardianRelation,guardianContactno,corresAddress,corresCIty,corresState,corresPincode,pmntAddress,pmntCity,pmnatetState,pmntPincode) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	$stmt = $mysqli->prepare($query);
-	$rc=$stmt->bind_param('iiiisisissssisississsisssi',$roomno,$seater,$feespm,$foodstatus,$stayfrom,$duration,$course,$regno,$fname,$mname,$lname,$gender,$contactno,$emailid,$emcntno,$gurname,$gurrelation,$gurcntno,$caddress,$ccity,$cstate,$cpincode,$paddress,$pcity,$pstate,$ppincode);
-	$stmt->execute();
-	echo"<script>alert('Student Succssfully register');</script>";
-	}
+session_start();
+include('includes/config.php');
+include('includes/checklogin.php');
+check_login();
+//code for registration
+if(isset($_POST['submit']))
+{
+$roomno=$_POST['room'];
+$seater=$_POST['seater'];
+$feespm=$_POST['fpm'];
+$foodstatus=$_POST['foodstatus'];
+$stayfrom=$_POST['stayf'];
+$duration=$_POST['duration'];
+$course=$_POST['course'];
+$regno=$_POST['regno'];
+$fname=$_POST['fname'];
+$mname=$_POST['mname'];
+$lname=$_POST['lname'];
+$gender=$_POST['gender'];
+$contactno=$_POST['contact'];
+$emailid=$_POST['email'];
+$emcntno=$_POST['econtact'];
+$gurname=$_POST['gname'];
+$gurrelation=$_POST['grelation'];
+$gurcntno=$_POST['gcontact'];
+$caddress=$_POST['address'];
+$ccity=$_POST['city'];
+$cstate=$_POST['state'];
+$cpincode=$_POST['pincode'];
+$paddress=$_POST['paddress'];
+$pcity=$_POST['pcity'];
+$pstate=$_POST['pstate'];
+$ppincode=$_POST['ppincode'];
+$query="insert into  registration(roomno,seater,feespm,foodstatus,stayfrom,duration,course,regno,firstName,middleName,lastName,gender,contactno,emailid,egycontactno,guardianName,guardianRelation,guardianContactno,corresAddress,corresCIty,corresState,corresPincode,pmntAddress,pmntCity,pmnatetState,pmntPincode) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$stmt = $mysqli->prepare($query);
+$rc=$stmt->bind_param('iiiisisissssisississsisssi',$roomno,$seater,$feespm,$foodstatus,$stayfrom,$duration,$course,$regno,$fname,$mname,$lname,$gender,$contactno,$emailid,$emcntno,$gurname,$gurrelation,$gurcntno,$caddress,$ccity,$cstate,$cpincode,$paddress,$pcity,$pstate,$ppincode);
+$stmt->execute();
+echo"<script>alert('Student Succssfully register');</script>";
+}
 ?>
-
 
 <!doctype html>
 <html lang="en" class="no-js">
@@ -64,22 +63,24 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script>
 function getSeater(val) {
-		$.ajax({
-		type: "POST",
-		url: "get_seater.php",
-		data:'roomid='+val,
-		success: function(data){
-				$('#seater').val(data);
-				}
+$.ajax({
+type: "POST",
+url: "get_seater.php",
+data:'roomid='+val,
+success: function(data){
+//alert(data);
+$('#seater').val(data);
+}
 });
 
 $.ajax({
-	type: "POST",
-	url: "get_seater.php",
-	data:'rid='+val,
-	success: function(data){
-		$('#fpm').val(data);
-		}
+type: "POST",
+url: "get_seater.php",
+data:'rid='+val,
+success: function(data){
+//alert(data);
+$('#fpm').val(data);
+}
 });
 }
 </script>
@@ -95,7 +96,7 @@ $.ajax({
 				<div class="row">
 					<div class="col-md-12">
 					
-						<h2 class="page-title">Registration </h2>
+						<h2 class="page-title">Register for a Dorm </h2>
 
 						<div class="row">
 							<div class="col-md-12">
@@ -103,21 +104,22 @@ $.ajax({
 									<div class="panel-heading">Fill all Info</div>
 									<div class="panel-body">
 										<form method="post" action="" class="form-horizontal">
-			<?php
-				$uid	=$_SESSION['login'];
-				$stmt	=$mysqli->prepare("SELECT emailid FROM registration WHERE emailid=? ");
-				$stmt	->bind_param('s',$uid);
-				$stmt	->execute();
-				$stmt 	-> bind_result($email);
-				$rs		=$stmt->fetch();
+							<?php
+$uid=$_SESSION['login'];
+							 $stmt=$mysqli->prepare("SELECT emailid FROM registration WHERE emailid=? ");
+				$stmt->bind_param('s',$uid);
+				$stmt->execute();
+				$stmt -> bind_result($email);
+				$rs=$stmt->fetch();
 				$stmt->close();
-				if($rs){ ?>
-						<h3 style="color: red" align="left">A dorm is already booked for you. <a href= "room-details.php">Click here to <u>Check</u> </a></h3>
-						<?php }
+				if($rs)
+				{ ?>
+			<h3 style="color: red" align="left">Dorm already booked for you</h3><h5>Click here to <a href="room-details.php"><u>check</u></a></h5>
+				<?php }
 				else{
-						echo "";
-						}			
-					?>			
+							echo "";
+							}			
+							?>			
 <div class="form-group">
 <label class="col-sm-4 control-label"><h4 style="color: green" align="left">Room Related info </h4> </label>
 </div>
@@ -160,7 +162,7 @@ while($row=$res->fetch_object())
 <label class="col-sm-2 control-label">Food Status</label>
 <div class="col-sm-8">
 <input type="radio" value="0" name="foodstatus" checked="checked"> Without Food
-<input type="radio" value="1" name="foodstatus"> With Food(Rs 2000.00 Per Month Extra)
+<input type="radio" value="1" name="foodstatus"> With Food(Taka 2000.00 Per Month Extra)
 </div>
 </div>	
 
@@ -187,6 +189,7 @@ while($row=$res->fetch_object())
 <option value="9">9</option>
 <option value="10">10</option>
 <option value="11">11</option>
+<option value="12">12</option>
 </select>
 </div>
 </div>
@@ -203,7 +206,7 @@ while($row=$res->fetch_object())
 </div>
 
 <div class="form-group">
-<label class="col-sm-2 control-label">Department </label>
+<label class="col-sm-2 control-label">course </label>
 <div class="col-sm-8">
 <select name="course" id="course" class="form-control" required> 
 <option value="">Select Course</option>
@@ -329,24 +332,29 @@ $aid=$_SESSION['id'];
 </div>
 </div>	
 
+
 <div class="form-group">
-<label class="col-sm-2 control-label">District </label>
-<div class="col-sm-8">
-<select name="state" id="state"class="form-control" required> 
-<option value="">Select District</option>
-<?php $query ="SELECT * FROM states";
-$stmt2 = $mysqli->prepare($query);
-$stmt2->execute();
-$res=$stmt2->get_result();
-while($row=$res->fetch_object())
-{
-?>
-<option value="<?php echo $row->State;?>"><?php echo $row->State;?></option>
-<?php } ?>
+	<label class="col-sm-2 control-label">State </label>
+		<div class="col-sm-8">
+		<select name="state" id="state"class="form-control" required> 
+		<option value="">Select State</option>
+	<?php $query ="SELECT * FROM states";
+	$stmt2 = $mysqli->prepare($query);
+	$stmt2->execute();
+	$res=$stmt2->get_result();
+	while($row=$res->fetch_object()){
+	?>
+		<option value="<?php echo $row->State;?>"><?php echo $row->State;?></option>
+		<?php } ?>
 </select> </div>
 </div>							
 
-	
+<div class="form-group">
+<label class="col-sm-2 control-label">P/O Box : </label>
+<div class="col-sm-8">
+<input type="text" name="pincode" id="pincode" value="0265"  class="form-control" required="required">
+</div>
+</div>	
 
 <div class="form-group">
 <label class="col-sm-3 control-label"><h4 style="color: green" align="left">Permanent Address </h4> </label>
@@ -391,6 +399,13 @@ while($row=$res->fetch_object())
 <?php } ?>
 </select> </div>
 </div>							
+
+<div class="form-group">
+<label class="col-sm-2 control-label">P/O Box : </label>
+<div class="col-sm-8">
+<input type="text" name="ppincode" id="ppincode"  value= "0265" class="form-control" display="false" required="false"> </span>
+</div>
+</div>	
 
 
 <div class="col-sm-6 col-sm-offset-4">

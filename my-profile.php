@@ -93,7 +93,7 @@ return true;
 								
 
 <div class="form-group">
-<label class="col-sm-2 control-label"> Registration No : </label>
+<label class="col-sm-2 control-label"> Student ID: </label>
 <div class="col-sm-8">
 <input type="text" name="regno" id="regno"  class="form-control" required="required" value="<?php echo $row->regNo;?>" >
 </div>
@@ -199,18 +199,18 @@ return true;
 	<script>
 function checkAvailability() {
 
-	$("#loaderIcon").show();
-	jQuery.ajax({
-		url: "check_availability.php",
-		data:'emailid='+$("#email").val(),
-		type: "POST",
-		success:function(data){
-			$("#user-availability-status").html(data);
-			$("#loaderIcon").hide();
-		},
-	error:function (){}
-	});
-	}
+$("#loaderIcon").show();
+jQuery.ajax({
+url: "check_availability.php",
+data:'emailid='+$("#email").val(),
+type: "POST",
+success:function(data){
+$("#user-availability-status").html(data);
+$("#loaderIcon").hide();
+},
+error:function (){}
+});
+}
 </script>
 
 </html>

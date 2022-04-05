@@ -94,7 +94,7 @@ return true;
                                             <?php } ?>											
 											<div class="hr-dashed"></div>
 											<div class="form-group">
-												<label class="col-sm-4 control-label">old Password </label>
+												<label class="col-sm-4 control-label">Old Password </label>
 												<div class="col-sm-8">
 				<input type="password" value="" name="oldpassword" id="oldpassword" class="form-control" onBlur="checkpass()" required="required">
 									 <span id="password-availability-status" class="help-block m-b-none" style="font-size:12px;"></span> </div>

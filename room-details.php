@@ -123,7 +123,7 @@ echo $dr*$fpm;
 </tr>
 
 <tr>
-<td><b>Reg Number:</b></td>
+<td><b>Student ID:</b></td>
 <td><?php echo $row->regno;?></td>
 <td><b>Full Name :</b></td>
 <td><?php echo $row->firstName;?><?php echo $row->middleName;?><?php echo $row->lastName;?></td>
