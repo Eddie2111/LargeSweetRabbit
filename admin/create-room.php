@@ -94,7 +94,7 @@ echo"<script>alert('Room has been added successfully');</script>";
 </div>
 </div>
 <div class="form-group">
-<label class="col-sm-2 control-label">Fee(Per Student)</label>
+<label class="col-sm-2 control-label">Fee(Per Day)</label>
 <div class="col-sm-8">
 <input type="text" class="form-control" name="fee" id="fee" value="" required="required">
 </div>

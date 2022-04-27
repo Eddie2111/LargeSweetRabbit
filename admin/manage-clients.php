@@ -7,7 +7,7 @@
 	if(isset($_GET['del']))
 	{
 		$id=intval($_GET['del']);
-		$adn="delete from room where Room_Number=?";
+		$adn="delete from guest where SSN=?";
 			$stmt= $mysqli->prepare($adn);
 			$stmt->bind_param('i',$id);
 			$stmt->execute();
@@ -26,8 +26,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
-	
-	<title>Manage Rooms</title>
+	<title>Manage Clients</title>
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
@@ -36,10 +35,22 @@
 	<link rel="stylesheet" href="css/fileinput.min.css">
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
 	<link rel="stylesheet" href="css/style1.css">
+
+<script language="javascript" type="text/javascript">
+	var popUpWin=0;
+	function popUpWindow(URLStr, left, top, width, height)
+	{
+		if(popUpWin){
+			if(!popUpWin.closed) 
+			popUpWin.close();
+		}
+		popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=yes,width='+510+',height='+430+',left='+left+', top='+top+',screenX='+left+',screenY='+top+'');
+	}
+</script>
+
 </head>
 
 <body>
-	
 	<?php include('includes/header.php');?>
 
 	<div class="ts-main-content">
@@ -48,8 +59,8 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12">
-					<br/><br/>
-						<h2 class="page-title">Manage Rooms</h2>
+						<br/><br/>
+						<h2 class="page-title">Manage Clients</h2>
 						<div class="panel panel-default">
 							<div class="panel-heading">All Room Details</div>
 							<div class="panel-body">
@@ -57,57 +68,62 @@
 									<thead>
 										<tr>
 											<th>Serial</th>
-											<th>Hotel_ID</th>
-											<th>Room_Number</th>
-											<th>Price</th>
-											<th>Category</th>
+											<th>SSN</th>
+											<th>Guest_ID</th>
+											<th>Name</th>
+											<th>Age</th>
+											<th>Date of Birth</th>
+											<th>Email</th>
+											<th>Taken Facilities </th>
+											<th>City</th>
+											<th>Room</th>
 											<th>Action</th>
 										</tr>
 									</thead>
-									
 									<tbody>
 <?php	
-$aid=$_SESSION['id'];
-$ret="select * from room ";
-$stmt= $mysqli->prepare($ret) ;
-//$stmt->bind_param('i',$aid);
-$stmt->execute() ;//ok
-$res=$stmt->get_result();
-$cnt=1;
-while($row=$res->fetch_object())
-	  {
-	  	?>
-<tr><td><?php echo $cnt;;?></td>
-<td><?php echo $row->Hotel_ID;?></td>
-<td><?php echo $row->Room_Number;?></td>
-<td><?php echo $row->Price;?></td>
-<td><?php echo $row->Category;?></td>
-<td><a href="edit-room.php?id=<?php echo $row->id;?>"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
-<a href="manage-rooms.php?del=<?php echo $row->Room_Number;?>" onclick="return confirm("Do you want to delete");"><i class="fa fa-close"></i></a></td>
-										</tr>
-									<?php
-$cnt=$cnt+1;
-									 } ?>
-											
-										
+	$aid=$_SESSION['id'];
+	$ret="SELECT g.*, r.Room_no,h.City from guest g join rents r on g.Guest_ID=r.Guest_ID join hotelbranch h on r.Hotel_ID=h.Hotel_ID";
+	$stmt= $mysqli->prepare($ret) ;
+	$stmt->execute();
+	$res=$stmt->get_result();
+	#echo $cnt;
+	$cnt=1;
+	while($row=$res->fetch_object())
+		{
+			?>
+	<tr><td><?php echo $cnt;?></td>
+	<td><?php echo $row->SSN;?></td>
+	<td><?php echo $row->Guest_ID;?></td>
+	<td><?php echo $row->First_Name;?><?php echo $row->Last_Name;?></td>
+	<td><?php echo $row->Age;?></td>
+	<td><?php echo $row->Date_Of_Birth;?></td>
+	<td><?php echo $row->Email;?></td>
+	<td><?php echo $row->facilities;?></td>
+	<td><?php echo $row->City;?></td>
+	<td><?php echo $row->Room_no;?></td>
+	<td>
+	<a href="javascript:void(0);"  onClick="popUpWindow('http://localhost/hostel/admin/full-profile.php?id=<?php echo $row->id;?>');" title="View Full Details"><i class="fa fa-desktop"></i></a>&nbsp;&nbsp;
+	<a href="manage-clients.php?del=<?php echo $row->SSN;?>" title="Delete Record" onclick="return confirm("Do you want to delete");"><i class="fa fa-close"></i></a></td>
+											</tr>
+    <?php
+			$cnt=$cnt+1;
+	} ?>
+																				
 									</tbody>
-								</table>
-
-								
+								</table>	
 							</div>
 						</div>
-
-					
 					</div>
 				</div>
 
-			
+
 
 			</div>
 		</div>
 	</div>
 
-	<!-- Loading Scripts -->
+
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap-select.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

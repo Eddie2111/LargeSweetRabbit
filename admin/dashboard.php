@@ -60,7 +60,7 @@ $stmt->close();
 ?>
 
 													<div class="stat-panel-number h1 "><?php echo $count;?></div>
-													<div class="stat-panel-title text-uppercase"> Students</div>
+													<div class="stat-panel-title text-uppercase"> Guests</div>
 												</div>
 											</div>
 											<a href="manage-students.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>

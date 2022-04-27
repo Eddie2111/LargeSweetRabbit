@@ -1,0 +1,99 @@
+.cardAlpha {
+    height: 300px;
+    width: 400px;
+    padding: 25px;
+    border-radius: 10px;
+    margin-left: -50px;
+    border: 1px solid #888888;
+    -webkit-box-shadow: 0px 1px 13px 5px rgba(0, 0, 0, 0.37);
+    box-shadow: 0px 1px 13px 5px rgba(0, 0, 0, 0.37);
+}
+.cardBeta {
+    height: 100px;
+    width: 400px;
+    padding: 25px;
+    border-radius: 10px;
+    margin-left: -50px;
+    border: 1px solid #888888;
+    -webkit-box-shadow: 0px 1px 13px 5px rgba(0, 0, 0, 0.37);
+    box-shadow: 0px 1px 13px 5px rgba(0, 0, 0, 0.37);
+}
+@media only screen and (max-width: 1200px){
+    .cardNone {
+        left: -30px;
+    }
+    .cardBeta {
+        left: -30px;
+    }
+    
+}
+.float-container {
+    padding: 20px;
+}
+
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    
+}  
+
+#styling {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(10, 245, 233);
+    transition: 0.5s ease-in-out;
+}
+
+#styling:hover {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(10, 92, 245);
+    transition: 0.5s ease-in-out;
+}
+
+#styling:active {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(58, 58, 58);
+    transition: 0.5s ease-in-out;
+}
+
+.styling {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(10, 245, 233);
+    transition: 0.5s ease-in-out;
+}
+
+.styling:hover {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(10, 92, 245);
+    transition: 0.5s ease-in-out;
+}
+
+.styling:active {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(58, 58, 58);
+    transition: 0.5s ease-in-out;
+}
+
+#buttonprimary {
+    height: 150px;
+    width: 300px;
+    background-color: rgb(30, 112, 253);
+    border-radius: 45px;
+    color: white;
+    transition: 0.5 ease-in-out;
+}
+
+#buttonprimary:hover {
+    height: 150px;
+    width: 300px;
+    background-color: rgb(30, 227, 253);
+    border-radius: 45px;
+    color: black;
+    transition: 0.5 ease-in-out;
+}

@@ -30,9 +30,9 @@ $udate=date('Y-m-d');
 	if($row_cnt>0)
 	{
 		$con="update admin set password=?,updation_date=?  where id=?";
-$chngpwd1 = $mysqli->prepare($con);
-$chngpwd1->bind_param('ssi',$np,$udate,$ai);
-  $chngpwd1->execute();
+		$chngpwd1 = $mysqli->prepare($con);
+		$chngpwd1->bind_param('ssi',$np,$udate,$ai);
+  		$chngpwd1->execute();
 		$_SESSION['msg']="Password Changed Successfully !!";
 	}
 	else

@@ -11,9 +11,10 @@
 					</ul>
 				</li>
 
-				<li><a href="registration.php"><i class="fa fa-user"></i>Student Registration</a></li>
-				<li><a href="manage-students.php"><i class="fa fa-users"></i>Manage Students</a></li>
+				<li><a href="registration.php"><i class="fa fa-user"></i>Client Registration</a></li>
+				<li><a href="manage-clients.php"><i class="fa fa-users"></i>Manage Clients</a></li>
+				<li><a href="manage-branch.php"><i class="fa fa-user"></i>Manage Branch</a></li>
+				<li><a href="manage-transactions.php"><i class="fa fa-users"></i>Recent Transactions</a></li>
+				<li><a href="parking-details.php"><i class="fa fa-user"></i>Parking Details</a></li>
 				
-
-			
 		</nav>

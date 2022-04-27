@@ -7,7 +7,7 @@
 	if(isset($_GET['del']))
 	{
 		$id=intval($_GET['del']);
-		$adn="delete from room where Room_Number=?";
+		$adn="delete from rooms where id=?";
 			$stmt= $mysqli->prepare($adn);
 			$stmt->bind_param('i',$id);
 			$stmt->execute();
@@ -27,7 +27,7 @@
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 	
-	<title>Manage Rooms</title>
+	<title>Manage Branch</title>
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
@@ -49,26 +49,30 @@
 				<div class="row">
 					<div class="col-md-12">
 					<br/><br/>
-						<h2 class="page-title">Manage Rooms</h2>
+						<h2 class="page-title">Branch Details</h2>
 						<div class="panel panel-default">
-							<div class="panel-heading">All Room Details</div>
+							<div class="panel-heading">All Hotel Branch Details</div>
 							<div class="panel-body">
 								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr>
-											<th>Serial</th>
+                                            <th> Serial </th>
 											<th>Hotel_ID</th>
-											<th>Room_Number</th>
-											<th>Price</th>
-											<th>Category</th>
-											<th>Action</th>
+											<th>Hotel Admin</th>
+											<th>Zip Code</th>
+											<th>Phone Number</th>
+											<th>City </th>
 										</tr>
 									</thead>
 									
 									<tbody>
 <?php	
 $aid=$_SESSION['id'];
-$ret="select * from room ";
+
+
+$ret="select * from hotelbranch"; // query !!
+
+
 $stmt= $mysqli->prepare($ret) ;
 //$stmt->bind_param('i',$aid);
 $stmt->execute() ;//ok
@@ -79,11 +83,12 @@ while($row=$res->fetch_object())
 	  	?>
 <tr><td><?php echo $cnt;;?></td>
 <td><?php echo $row->Hotel_ID;?></td>
-<td><?php echo $row->Room_Number;?></td>
-<td><?php echo $row->Price;?></td>
-<td><?php echo $row->Category;?></td>
-<td><a href="edit-room.php?id=<?php echo $row->id;?>"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
-<a href="manage-rooms.php?del=<?php echo $row->Room_Number;?>" onclick="return confirm("Do you want to delete");"><i class="fa fa-close"></i></a></td>
+<td><?php echo $row->zipCode;?></td>
+<td><?php echo $row->Hotel_admin;?></td>
+<td><?php echo $row->phoneNumber;?></td>
+<td><?php echo $row->City;?></td>
+
+
 										</tr>
 									<?php
 $cnt=$cnt+1;
@@ -107,7 +112,7 @@ $cnt=$cnt+1;
 		</div>
 	</div>
 
-	<!-- Loading Scripts -->
+	<!-- Loading Scripts -- this is for -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap-select.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

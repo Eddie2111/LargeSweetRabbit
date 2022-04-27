@@ -1,0 +1,45 @@
+.cardAlpha{
+    height: 300px;
+    width: 400px;
+    padding: 10px;
+    margin-left: -50px;
+    border: 1px solid #888888;
+    -webkit-box-shadow: 0px 1px 13px 5px rgba(0,0,0,0.37); 
+    box-shadow: 0px 1px 13px 5px rgba(0,0,0,0.37);
+}
+#styling{
+    border:none;
+    outline: none;
+    border-bottom: 1px solid rgb(10, 245, 233);
+    transition: 0.5s ease-in-out;
+}
+#styling:hover{
+    border:none;
+    outline: none;
+    border-bottom: 1px solid rgb(10, 92, 245);
+    transition: 0.5s ease-in-out;
+}
+#styling:active{
+    border:none;
+    outline: none;
+    border-bottom: 1px solid rgb(58, 58, 58);
+    transition: 0.5s ease-in-out;
+}
+.styling{
+    border:none;
+    outline: none;
+    border-bottom: 1px solid rgb(10, 245, 233);
+    transition: 0.5s ease-in-out;
+}
+.styling:hover{
+    border:none;
+    outline: none;
+    border-bottom: 1px solid rgb(10, 92, 245);
+    transition: 0.5s ease-in-out;
+}
+.styling:active{
+    border:none;
+    outline: none;
+    border-bottom: 1px solid rgb(58, 58, 58);
+    transition: 0.5s ease-in-out;
+}

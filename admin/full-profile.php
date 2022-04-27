@@ -1,12 +1,6 @@
 <?php
 session_start();
 		include("includes/config.php");
-		$mysql_hostname = "localhost";
-		$mysql_user = "root";
-		$mysql_password = "";
-		$mysql_database = "hostel";
-		$prefix = "";
-		$bd = mysqli_connect($mysql_hostname, $mysql_user, $mysql_password,$mysql_database);
 ?>
 <script language="javascript" type="text/javascript">
 function f2()
@@ -22,7 +16,7 @@ window.print();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Student  Information</title>
+<title>Guest Information</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 <link href="hostel.css" rel="stylesheet" type="text/css">
 </head>
@@ -31,7 +25,7 @@ window.print();
 <table width="100%" border="0">
 <?php 
 		
-		 $ret= mysqli_query($bd,"SELECT * FROM registration where id = '".$_GET['id']."'");
+		 $ret= mysqli_query($mysqli,"SELECT * FROM registration where id = '".$_GET['id']."'");
 			while($row=mysqli_fetch_array($ret))
 			{
 			?>
