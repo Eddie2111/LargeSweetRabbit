@@ -7,20 +7,22 @@
 	$aid=$_SESSION['id'];
 	if(isset($_POST['update']))
 	{
-
-	$regno=$_POST['regno'];
-	$fname=$_POST['fname'];
-	$mname=$_POST['mname'];
-	$lname=$_POST['lname'];
-	$gender=$_POST['gender'];
-	$contactno=$_POST['contact'];
-	$udate = date('d-m-Y h:i:s', time());
-	$query="update  userRegistration set regNo=?,firstName=?,middleName=?,lastName=?,gender=?,contactNo=?,updationDate=? where id=?";
-	$stmt = $mysqli->prepare($query);
-	$rc=$stmt->bind_param('sssssisi',$regno,$fname,$mname,$lname,$gender,$contactno,$udate,$aid);
-	$stmt->execute();
-	echo"<script>alert('Profile updated Succssfully');</script>";
+	$SSN	= $_POST['ssn'];
+	$Guest_ID=$_POST['Guest_ID'];
+	$fname	= $_POST['fname'];
+	$lname	= $_POST['lname'];
+	$email	= $_POST['email'];
+	$DateofBirth = $_POST['dob'];
+	$sql = "UPDATE `guest` SET `SSN`='".$SSN."', `First_Name`='".$fname."', `Last_Name`='".$lname."', `Email`='".$email."', `Date_of_Birth`='".$DateofBirth."',`Guest_ID`='".$aid."' WHERE `SSN`='".$SSN."'";
+	$mysqli->query($sql);
+	if ($mysqli->affected_rows > 0) {
+		echo "<script>alert('Profile Updated Successfully');</script>";
 	}
+	else{
+		echo "<script>alert('Profile Not Updated');</script>";
+	}
+	}
+	
 ?>
 
 <!doctype html>
@@ -65,7 +67,7 @@ return true;
 			<div class="container-fluid">
 	<?php	
 		$aid=$_SESSION['id'];
-			$ret="select * from userregistration where id=?";
+			$ret="select * from guest where SSN=?";
 				$stmt= $mysqli->prepare($ret) ;
 			$stmt->bind_param('i',$aid);
 			$stmt->execute() ;
@@ -76,7 +78,7 @@ return true;
 				?>	
 				<div class="row">
 					<div class="col-md-12">
-						<h2 class="page-title"><?php echo $row->firstName;?>'s&nbsp;Profile </h2>
+						<h2 class="page-title"><?php echo $row->First_Name;?>'s&nbsp;Profile </h2>
 
 						<div class="row">
 							<div class="col-md-12">
@@ -93,9 +95,9 @@ return true;
 								
 
 <div class="form-group">
-<label class="col-sm-2 control-label"> Student ID: </label>
+<label class="col-sm-2 control-label"> Social Security Number: </label>
 <div class="col-sm-8">
-<input type="text" name="regno" id="regno"  class="form-control" required="required" value="<?php echo $row->regNo;?>" >
+<input type="text" name="ssn" id="regno"  class="form-control" required="required" value="<?php echo $row->SSN;?>" >
 </div>
 </div>
 
@@ -103,41 +105,29 @@ return true;
 <div class="form-group">
 <label class="col-sm-2 control-label">First Name : </label>
 <div class="col-sm-8">
-<input type="text" name="fname" id="fname"  class="form-control" value="<?php echo $row->firstName;?>"   required="required" >
+<input type="text" name="fname" id="fname"  class="form-control" value="<?php echo $row->First_Name;?>"   required="required" >
 </div>
 </div>
 
-<div class="form-group">
-<label class="col-sm-2 control-label">Middle Name : </label>
-<div class="col-sm-8">
-<input type="text" name="mname" id="mname"  class="form-control" value="<?php echo $row->middleName;?>"  >
-</div>
-</div>
 
 <div class="form-group">
 <label class="col-sm-2 control-label">Last Name : </label>
 <div class="col-sm-8">
-<input type="text" name="lname" id="lname"  class="form-control" value="<?php echo $row->lastName;?>" required="required">
+<input type="text" name="lname" id="lname"  class="form-control" value="<?php echo $row->Last_Name;?>" required="required">
 </div>
 </div>
 
 <div class="form-group">
-<label class="col-sm-2 control-label">Gender : </label>
+<label class="col-sm-2 control-label">Guest ID : </label>
 <div class="col-sm-8">
-<select name="gender" class="form-control" required="required">
-<option value="<?php echo $row->gender;?>"><?php echo $row->gender;?></option>
-<option value="male">Male</option>
-<option value="female">Female</option>
-<option value="others">Others</option>
-
-</select>
+<input type="text" name="Guest_ID" id="lname"  class="form-control" value="<?php echo $row->Guest_ID;?>" required="required">
 </div>
 </div>
 
 <div class="form-group">
-<label class="col-sm-2 control-label">Contact No : </label>
+<label class="col-sm-2 control-label">Date of Birth : </label>
 <div class="col-sm-8">
-<input type="text" name="contact" id="contact"  class="form-control" maxlength="10" value="<?php echo $row->contactNo;?>" required="required">
+<input type="date" name="dob"  class="form-control" value="<?php echo $row->Date_Of_Birth;?>" required="required">
 </div>
 </div>
 
@@ -145,7 +135,7 @@ return true;
 <div class="form-group">
 <label class="col-sm-2 control-label">Email id: </label>
 <div class="col-sm-8">
-<input type="email" name="email" id="email"  class="form-control" value="<?php echo $row->email;?>" readonly>
+<input type="email" name="email" id="email"  class="form-control" value="<?php echo $row->Email;?>" >
 <span id="user-availability-status" style="font-size:12px;"></span>
 </div>
 </div>

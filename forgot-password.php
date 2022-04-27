@@ -5,8 +5,8 @@
 	{
 	$email=$_POST['email'];
 	$contact=$_POST['contact'];
-	$stmt=$mysqli->prepare("SELECT email,contactNo,password FROM userregistration WHERE (email=? && contactNo=?) ");
-					$stmt->bind_param('ss',$email,$contact);
+	$stmt=$mysqli->prepare("SELECT email,contactNo,password FROM guest WHERE (Email=? && SSN=?) ");
+					$stmt->bind_param('si',$email,$contact);
 					$stmt->execute();
 					$stmt -> bind_result($username,$email,$password);
 					$rs=$stmt->fetch();
@@ -59,7 +59,7 @@
 								<form action="" class="mt" method="post">
 									<label for="" class="text-uppercase text-sm">Your Email</label>
 									<input type="email" placeholder="Email" name="email" class="form-control mb">
-									<label for="" class="text-uppercase text-sm">Your Contact no</label>
+									<label for="" class="text-uppercase text-sm">Your SSN</label>
 									<input type="text" placeholder="Contact no" name="contact" class="form-control mb">
 									
 

@@ -3270,26 +3270,30 @@ fieldset[disabled] .btn-primary.focus {
 }
 .btn-success {
  color:#ffffff;
- background-color:#93c54b;
- border-color:transparent
+ background-color:#165cf3;
+ border-color:transparent;
+ transition: 0.5s all ease;
 }
 .btn-success:focus,
 .btn-success.focus {
- color:#ffffff;
- background-color:#79a736;
- border-color:rgba(0,0,0,0)
+ color:#000000;
+ background-color:#1a16f3;
+ border-color:rgba(0,0,0,0);
+ transition: 0.5s all ease;
 }
 .btn-success:hover {
- color:#ffffff;
- background-color:#79a736;
- border-color:rgba(0,0,0,0)
+ color:#000000;
+ background-color:#afff37;
+ border-color:rgba(0,0,0,0);
+ transition: 0.5s all ease;
 }
 .btn-success:active,
 .btn-success.active,
 .open>.dropdown-toggle.btn-success {
  color:#ffffff;
  background-color:#79a736;
- border-color:rgba(0,0,0,0)
+ border-color:rgba(0,0,0,0);
+ transition: 0.5s all ease;
 }
 .btn-success:active:hover,
 .btn-success.active:hover,
@@ -3301,8 +3305,9 @@ fieldset[disabled] .btn-primary.focus {
 .btn-success.active.focus,
 .open>.dropdown-toggle.btn-success.focus {
  color:#ffffff;
- background-color:#658c2d;
- border-color:rgba(0,0,0,0)
+ background-color:#165cf3;
+ border-color:rgba(0,0,0,0);
+ transition: 0.5s all ease;
 }
 .btn-success:active,
 .btn-success.active,
@@ -5798,19 +5803,19 @@ button.list-group-item-danger.active:focus {
  border-bottom-color:#dfd7ca
 }
 .panel-primary {
- border-color:#325d88
+    background-color: #fafafa;
 }
 .panel-primary>.panel-heading {
  color:#ffffff;
- background-color:#325d88;
+ background-image: linear-gradient(#1536ed, #15aced);
  border-color:#325d88
 }
 .panel-primary>.panel-heading+.panel-collapse>.panel-body {
- border-top-color:#325d88
+    background-color: #f0e9df;
 }
 .panel-primary>.panel-heading .badge {
  color:#325d88;
- background-color:#ffffff
+ background-image: linear-gradient(#1536ed, #15aced);
 }
 .panel-primary>.panel-footer+.panel-collapse>.panel-body {
  border-bottom-color:#325d88

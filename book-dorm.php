@@ -6,39 +6,28 @@ check_login();
 //code for registration
 if(isset($_POST['submit']))
 {
-$roomno=$_POST['room'];
-$seater=$_POST['seater'];
-$feespm=$_POST['fpm'];
-$foodstatus=$_POST['foodstatus'];
-$stayfrom=$_POST['stayf'];
-$duration=$_POST['duration'];
-$course=$_POST['course'];
-$regno=$_POST['regno'];
-$fname=$_POST['fname'];
-$mname=$_POST['mname'];
-$lname=$_POST['lname'];
-$gender=$_POST['gender'];
-$contactno=$_POST['contact'];
-$emailid=$_POST['email'];
-$emcntno=$_POST['econtact'];
-$gurname=$_POST['gname'];
-$gurrelation=$_POST['grelation'];
-$gurcntno=$_POST['gcontact'];
-$caddress=$_POST['address'];
-$ccity=$_POST['city'];
-$cstate=$_POST['state'];
-$cpincode=$_POST['pincode'];
-$paddress=$_POST['paddress'];
-$pcity=$_POST['pcity'];
-$pstate=$_POST['pstate'];
-$ppincode=$_POST['ppincode'];
-$query="insert into  registration(roomno,seater,feespm,foodstatus,stayfrom,duration,course,regno,firstName,middleName,lastName,gender,contactno,emailid,egycontactno,guardianName,guardianRelation,guardianContactno,corresAddress,corresCIty,corresState,corresPincode,pmntAddress,pmntCity,pmnatetState,pmntPincode) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-$stmt = $mysqli->prepare($query);
-$rc=$stmt->bind_param('iiiisisissssisississsisssi',$roomno,$seater,$feespm,$foodstatus,$stayfrom,$duration,$course,$regno,$fname,$mname,$lname,$gender,$contactno,$emailid,$emcntno,$gurname,$gurrelation,$gurcntno,$caddress,$ccity,$cstate,$cpincode,$paddress,$pcity,$pstate,$ppincode);
-$stmt->execute();
-echo"<script>alert('Student Succssfully register');</script>";
+	$Guest_ID = $_POST['Guest_ID'];
+	$Hotel_ID = 12113;
+	$Room_no = $_POST['Room_no'];
+	$Registration_date = $_POST['Registration_date'];
+	$Check_in_date = $_POST['Check_in_date'];
+	$Check_out_date = $_POST['Check_out_date'];
+	$Discount = $_POST['Discount'];
+	$Payment_Status = $_POST['Payment_Status'];
+	$sql = "INSERT INTO `rents` (`Guest_ID`, `Hotel_ID`, `Room_no`, `Registration_date`, `Check_in_date`, `Check_out_date`, `Discount`, `Payment_Status`) VALUES ('$Guest_ID', '$Hotel_ID', '$Room_no', '$Registration_date', '$Check_in_date', '$Check_out_date', '$Discount', '$Payment_Status')";
+	#sql = INSERT INTO `rents` (`Guest_ID`, `Hotel_ID`, `Room_no`, `Registration_date`, `Check_in_date`, `Check_out_date`, `Discount`, `Payment_Status`) VALUES ('1', '12213', '101', '2022-04-19', '2022-04-18', '2022-04-21', '20', 'INCOMPLETE') 
+	$mysqli->query($sql);
+	if ($mysqli->affected_rows > 0) {
+		echo "<script>alert('Room Rented Successfully');</script>";
+	}
+	else{
+		echo "<script>alert('Room Rented Successfully');</script>";
+	}
+
 }
 ?>
+
+
 
 <!doctype html>
 <html lang="en" class="no-js">
@@ -49,7 +38,7 @@ echo"<script>alert('Student Succssfully register');</script>";
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
-	<title>Student Hostel Registration</title>
+	<title>Guest Registration</title>
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">>
@@ -63,25 +52,23 @@ echo"<script>alert('Student Succssfully register');</script>";
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script>
 function getSeater(val) {
-$.ajax({
-type: "POST",
-url: "get_seater.php",
-data:'roomid='+val,
+	$.ajax({
+	type: "POST",
+	url: "get_seater.php",
+	data:'roomid='+val,
 success: function(data){
-//alert(data);
-$('#seater').val(data);
-}
+	$('#seater').val(data);
+	}
 });
 
-$.ajax({
-type: "POST",
-url: "get_seater.php",
-data:'rid='+val,
-success: function(data){
-//alert(data);
-$('#fpm').val(data);
-}
-});
+	$.ajax({
+	type: "POST",
+	url: "get_seater.php",
+	data:'rid='+val,
+	success: function(data){
+		$('#fpm').val(data);
+	}
+	});
 }
 </script>
 
@@ -96,17 +83,17 @@ $('#fpm').val(data);
 				<div class="row">
 					<div class="col-md-12">
 					
-						<h2 class="page-title">Register for a Dorm </h2>
+						<h2 class="page-title">Booking for a Room </h2>
 
 						<div class="row">
 							<div class="col-md-12">
 								<div class="panel panel-primary">
-									<div class="panel-heading">Fill all Info</div>
+									<div class="panel-heading">Please fill all info</div>
 									<div class="panel-body">
 										<form method="post" action="" class="form-horizontal">
-							<?php
-$uid=$_SESSION['login'];
-							 $stmt=$mysqli->prepare("SELECT emailid FROM registration WHERE emailid=? ");
+			<?php
+				$uid=$_SESSION['login'];
+				$stmt=$mysqli->prepare("SELECT emailid FROM registration WHERE emailid=? ");
 				$stmt->bind_param('s',$uid);
 				$stmt->execute();
 				$stmt -> bind_result($email);
@@ -114,7 +101,7 @@ $uid=$_SESSION['login'];
 				$stmt->close();
 				if($rs)
 				{ ?>
-			<h3 style="color: red" align="left">Dorm already booked for you</h3><h5>Click here to <a href="room-details.php"><u>check</u></a></h5>
+			<h3 style="color: red" align="left">Room already booked for you</h3><h5>Click here to <a href="room-details.php"><u>check</u></a></h5>
 				<?php }
 				else{
 							echo "";
@@ -127,16 +114,18 @@ $uid=$_SESSION['login'];
 <div class="form-group">
 <label class="col-sm-2 control-label">Room no. </label>
 <div class="col-sm-8">
-<select name="room" id="room"class="form-control"  onChange="getSeater(this.value);" onBlur="checkAvailability()" required> 
+<select name="Room_no" id="room"class="form-control"  onChange="getSeater(this.value);" onBlur="checkAvailability()" required> 
 <option value="">Select Room</option>
-<?php $query ="SELECT * FROM rooms";
-$stmt2 = $mysqli->prepare($query);
-$stmt2->execute();
-$res=$stmt2->get_result();
-while($row=$res->fetch_object())
-{
+
+<?php 
+	$query ="SELECT `Room_no` FROM `rents` WHERE `Payment_Status` = 'INCOMPLETE';";
+	$stmt2 = $mysqli->prepare($query);
+	$stmt2->execute();
+	$res=$stmt2->get_result();
+	while($row=$res->fetch_object())
+	{
 ?>
-<option value="<?php echo $row->room_no;?>"> <?php echo $row->room_no;?></option>
+<option value="<?php echo $row->Room_no;?>"> <?php echo $row->Room_no;?></option>
 <?php } ?>
 </select> 
 <span id="room-availability-status" style="font-size:12px;"></span>
@@ -144,87 +133,61 @@ while($row=$res->fetch_object())
 </div>
 </div>
 											
+
+
 <div class="form-group">
-<label class="col-sm-2 control-label">Seater</label>
+<label class="col-sm-2 control-label">Check out</label>
 <div class="col-sm-8">
-<input type="text" name="seater" id="seater"  class="form-control"  >
+<input type="date" name="Check_out_date" id="checkin"  class="form-control" >
 </div>
 </div>
 
 <div class="form-group">
-<label class="col-sm-2 control-label">Fees Per Month</label>
+<label class="col-sm-2 control-label">Check in</label>
 <div class="col-sm-8">
-<input type="text" name="fpm" id="fpm"  class="form-control" >
+<input type="date" name="Check_in_date" id="checkout"  class="form-control" >
 </div>
 </div>
 
 <div class="form-group">
-<label class="col-sm-2 control-label">Food Status</label>
+<label class="col-sm-2 control-label">Registration Date</label>
 <div class="col-sm-8">
-<input type="radio" value="0" name="foodstatus" checked="checked"> Without Food
-<input type="radio" value="1" name="foodstatus"> With Food(Taka 2000.00 Per Month Extra)
-</div>
-</div>	
-
-<div class="form-group">
-<label class="col-sm-2 control-label">Stay From</label>
-<div class="col-sm-8">
-<input type="date" name="stayf" id="stayf"  class="form-control" >
+<input type="date" name="Registration_date" id="checkout"   class="form-control" >
 </div>
 </div>
 
-<div class="form-group">
-<label class="col-sm-2 control-label">Duration</label>
-<div class="col-sm-8">
-<select name="duration" id="duration" class="form-control">
-<option value="">Select Duration in Month</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-</select>
-</div>
-</div>
 
 <div class="form-group">
-<label class="col-sm-2 control-label">Total Amount</label>
+<label class="col-sm-2 control-label">Chose Special Facility </label>
 <div class="col-sm-8">
-<input type="text" name="ta" id="ta"  class="result form-control" >
+<select name="facility" class="form-control" > 
+<option value="">Select Facility</option>
+
+<?php 
+	$query ="SELECT * FROM `facilities`;";
+	$stmt2 = $mysqli->prepare($query);
+	$stmt2->execute();
+	$res=$stmt2->get_result();
+	while($row=$res->fetch_object())
+	{
+?>
+<option value="<?php echo $row->Facilities_Code;?>"> <?php echo $row->Name;?></option>
+<?php } ?>
+</select> 
+<span id="room-availability-status" style="font-size:12px;"></span>
+
 </div>
 </div>
+											
 
 <div class="form-group">
 <label class="col-sm-2 control-label"><h4 style="color: green" align="left">Personal info </h4> </label>
 </div>
 
-<div class="form-group">
-<label class="col-sm-2 control-label">course </label>
-<div class="col-sm-8">
-<select name="course" id="course" class="form-control" required> 
-<option value="">Select Course</option>
-<?php $query ="SELECT * FROM courses";
-$stmt2 = $mysqli->prepare($query);
-$stmt2->execute();
-$res=$stmt2->get_result();
-while($row=$res->fetch_object())
-{
-?>
-<option value="<?php echo $row->course_fn;?>"><?php echo $row->course_fn;?>&nbsp;&nbsp;(<?php echo $row->course_sn;?>)</option>
-<?php } ?>
-</select> </div>
-</div>
 
 <?php	
 $aid=$_SESSION['id'];
-	$ret="select * from userregistration where id=?";
+	$ret="select * from guest where SSN=?";
 		$stmt= $mysqli->prepare($ret) ;
 	 $stmt->bind_param('i',$aid);
 	 $stmt->execute() ;//ok
@@ -235,9 +198,9 @@ $aid=$_SESSION['id'];
 	  	?>
 
 <div class="form-group">
-<label class="col-sm-2 control-label">Registration No : </label>
+<label class="col-sm-2 control-label">Social Security Number : </label>
 <div class="col-sm-8">
-<input type="text" name="regno" id="regno"  class="form-control" value="<?php echo $row->regNo;?>" readonly >
+<input type="text" name="SSN" id="regno"  class="form-control" value="<?php echo $row->SSN;?>" readonly >
 </div>
 </div>
 
@@ -245,35 +208,23 @@ $aid=$_SESSION['id'];
 <div class="form-group">
 <label class="col-sm-2 control-label">First Name : </label>
 <div class="col-sm-8">
-<input type="text" name="fname" id="fname"  class="form-control" value="<?php echo $row->firstName;?>" readonly>
+<input type="text" name="First_Name" id="fname"  class="form-control" value="<?php echo $row->First_Name;?>" readonly>
 </div>
 </div>
 
-<div class="form-group">
-<label class="col-sm-2 control-label">Middle Name : </label>
-<div class="col-sm-8">
-<input type="text" name="mname" id="mname"  class="form-control" value="<?php echo $row->middleName;?>"  readonly>
-</div>
-</div>
 
 <div class="form-group">
 <label class="col-sm-2 control-label">Last Name : </label>
 <div class="col-sm-8">
-<input type="text" name="lname" id="lname"  class="form-control" value="<?php echo $row->lastName;?>" readonly>
+<input type="text" name="Last_Name" id="lname"  class="form-control" value="<?php echo $row->Last_Name;?>" readonly>
 </div>
 </div>
 
-<div class="form-group">
-<label class="col-sm-2 control-label">Gender : </label>
-<div class="col-sm-8">
-<input type="text" name="gender" value="<?php echo $row->gender;?>" class="form-control" readonly>
-</div>
-</div>
 
 <div class="form-group">
-<label class="col-sm-2 control-label">Contact No : </label>
+<label class="col-sm-2 control-label">Guest ID : </label>
 <div class="col-sm-8">
-<input type="text" name="contact" id="contact" value="<?php echo $row->contactNo;?>"  class="form-control" readonly>
+<input type="text" name="Guest_ID" value="<?php echo $row->Guest_ID;?>"  class="form-control" >
 </div>
 </div>
 
@@ -281,132 +232,28 @@ $aid=$_SESSION['id'];
 <div class="form-group">
 <label class="col-sm-2 control-label">Email id : </label>
 <div class="col-sm-8">
-<input type="email" name="email" id="email"  class="form-control" value="<?php echo $row->email;?>"  readonly>
+<input type="email" name="email" id="email"  class="form-control" value="<?php echo $row->Email;?>"  readonly>
 </div>
 </div>
 <?php } ?>
+
 <div class="form-group">
-<label class="col-sm-2 control-label">Emergency Contact: </label>
+<label class="col-sm-2 control-label"><h4 style="color: green" align="left">Payment Related Info </h4> </label>
+</div>
+
+<div class="form-group">
+<label class="col-sm-2 control-label">Payment Status : </label>
 <div class="col-sm-8">
-<input type="text" name="econtact" id="econtact"  class="form-control" required="required">
+<input type="text" name="Payment_Status" id="email"  class="form-control" value="INCOMPLETE"  readonly>
 </div>
 </div>
 
 <div class="form-group">
-<label class="col-sm-2 control-label">Guardian  Name : </label>
+<label class="col-sm-2 control-label">Discount Status : </label>
 <div class="col-sm-8">
-<input type="text" name="gname" id="gname"  class="form-control" required="required">
+<input type="text" name="Discount" id="email"  class="form-control" value="20"  readonly>
 </div>
 </div>
-
-<div class="form-group">
-<label class="col-sm-2 control-label">Guardian  Relation : </label>
-<div class="col-sm-8">
-<input type="text" name="grelation" id="grelation"  class="form-control" required="required">
-</div>
-</div>
-
-<div class="form-group">
-<label class="col-sm-2 control-label">Guardian Contact no : </label>
-<div class="col-sm-8">
-<input type="text" name="gcontact" id="gcontact"  class="form-control" required="required">
-</div>
-</div>	
-
-<div class="form-group">
-<label class="col-sm-3 control-label"><h4 style="color: green" align="left">Correspondense Address </h4> </label>
-</div>
-
-
-<div class="form-group">
-<label class="col-sm-2 control-label">Address : </label>
-<div class="col-sm-8">
-<textarea  rows="5" name="address"  id="address" class="form-control" required="required"></textarea>
-</div>
-</div>
-
-<div class="form-group">
-<label class="col-sm-2 control-label">City : </label>
-<div class="col-sm-8">
-<input type="text" name="city" id="city"  class="form-control" required="required">
-</div>
-</div>	
-
-
-<div class="form-group">
-	<label class="col-sm-2 control-label">State </label>
-		<div class="col-sm-8">
-		<select name="state" id="state"class="form-control" required> 
-		<option value="">Select State</option>
-	<?php $query ="SELECT * FROM states";
-	$stmt2 = $mysqli->prepare($query);
-	$stmt2->execute();
-	$res=$stmt2->get_result();
-	while($row=$res->fetch_object()){
-	?>
-		<option value="<?php echo $row->State;?>"><?php echo $row->State;?></option>
-		<?php } ?>
-</select> </div>
-</div>							
-
-<div class="form-group">
-<label class="col-sm-2 control-label">P/O Box : </label>
-<div class="col-sm-8">
-<input type="text" name="pincode" id="pincode" value="0265"  class="form-control" required="required">
-</div>
-</div>	
-
-<div class="form-group">
-<label class="col-sm-3 control-label"><h4 style="color: green" align="left">Permanent Address </h4> </label>
-</div>
-
-
-<div class="form-group">
-<label class="col-sm-5 control-label">Permanent Address same as Correspondense address : </label>
-<div class="col-sm-4">
-<input type="checkbox" name="adcheck" value="1"/>
-</div>
-</div>
-
-
-<div class="form-group">
-<label class="col-sm-2 control-label">Address : </label>
-<div class="col-sm-8">
-<textarea  rows="5" name="paddress"  id="paddress" class="form-control" required="required"></textarea>
-</div>
-</div>
-
-<div class="form-group">
-<label class="col-sm-2 control-label">City : </label>
-<div class="col-sm-8">
-<input type="text" name="pcity" id="pcity"  class="form-control" required="required">
-</div>
-</div>	
-
-<div class="form-group">
-<label class="col-sm-2 control-label">State </label>
-<div class="col-sm-8">
-<select name="pstate" id="pstate"class="form-control" required> 
-<option value="">Select State</option>
-<?php $query ="SELECT * FROM states";
-$stmt2 = $mysqli->prepare($query);
-$stmt2->execute();
-$res=$stmt2->get_result();
-while($row=$res->fetch_object())
-{
-?>
-<option value="<?php echo $row->State;?>"><?php echo $row->State;?></option>
-<?php } ?>
-</select> </div>
-</div>							
-
-<div class="form-group">
-<label class="col-sm-2 control-label">P/O Box : </label>
-<div class="col-sm-8">
-<input type="text" name="ppincode" id="ppincode"  value= "0265" class="form-control" display="false" required="false"> </span>
-</div>
-</div>	
-
 
 <div class="col-sm-6 col-sm-offset-4">
 <button class="btn btn-default" type="submit">Cancel</button>

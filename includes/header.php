@@ -1,7 +1,7 @@
 
 <?php if($_SESSION['id'])
 { ?><div class="brand clearfix">
-		<a href="index.php" class="logo" style="font-size:16px;">Dorm Management System</a>
+		<a href="index.php" class="logo" style="font-size:16px;">Hotel Management System</a>
 		<span class="menu-btn"><i class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
 			<li class="ts-account">
@@ -17,7 +17,7 @@
 <?php
 } else { ?>
 <div class="brand clearfix">
-		<a href="index.php" class="logo" style="font-size:16px;">Dorm Management System</a>
+		<a href="index.php" class="logo" style="font-size:16px;">Hotel Management System</a>
 		<span class="menu-btn"><i class="fa fa-bars"></i></span>
 		
 	</div>

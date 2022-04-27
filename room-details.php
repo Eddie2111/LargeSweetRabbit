@@ -58,7 +58,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 									<tbody>
 <?php	
 	$aid=$_SESSION['login'];
-		$ret="select * from registration where emailid=?";
+	$ret="select * from registration where emailid=?";
 	$stmt= $mysqli->prepare($ret) ;
 	$stmt->bind_param('s',$aid);
 	$stmt->execute() ;

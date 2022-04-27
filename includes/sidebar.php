@@ -9,8 +9,9 @@
 					<li><a href="dashboard.php"><i class="fa fa-desktop"></i>Dashboard</a></li>
 					<li><a href="my-profile.php"><i class="fa fa-user"></i> My Profile</a></li>
 <li><a href="change-password.php"><i class="fa fa-key"></i>Change Password</a></li>
-<li><a href="book-dorm.php"><i class="fa fa-pencil-square-o"></i>Dorm Registration</a></li>
-<li><a href="room-details.php"><i class="fa fa-files-o" aria-hidden="true"></i>Dorm Details</a></li>
+<li><a href="book-room.php"><i class="fa fa-pencil-square-o"></i>Room Booking</a></li>
+<li><a href="room-details.php"><i class="fa fa-files-o" aria-hidden="true"></i>Room Details</a></li>
+<li><a href="parking-details.php"><i class="fa fa-files-o" aria-hidden="true"></i>Request for a Parking</a></li>
 
 <?php } else { ?>
 				

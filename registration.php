@@ -3,7 +3,7 @@ session_start();
 include('includes/config.php');
 if(isset($_POST['submit']))
 {
-$regno=$_POST['regno'];
+$ssn=$_POST['ssn'];
 $fname=$_POST['fname'];
 $mname=$_POST['mname'];
 $lname=$_POST['lname'];
@@ -11,11 +11,12 @@ $gender=$_POST['gender'];
 $contactno=$_POST['contact'];
 $emailid=$_POST['email'];
 $password=$_POST['password'];
-$query="insert into  userRegistration(regNo,firstName,middleName,lastName,gender,contactNo,email,password) values(?,?,?,?,?,?,?,?)";
+$query="insert into userRegistration(ssn,firstName,middleName,lastName,gender,contactNo,email,password) values(?,?,?,?,?,?,?,?)";
 $stmt = $mysqli->prepare($query);
-$rc=$stmt->bind_param('sssssiss',$regno,$fname,$mname,$lname,$gender,$contactno,$emailid,$password);
+$rc=$stmt->bind_param('sssssiss',$ssn,$fname,$mname,$lname,$gender,$contactno,$emailid,$password);
 $stmt->execute();
 echo"<script>alert('Registration Complete! Please Login to proceed. ');</script>";
+
 header("Location: login.php");
 }
 ?>
@@ -23,24 +24,11 @@ header("Location: login.php");
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<meta name="theme-color" content="#3e454c">
+<?php
+	include "scripts_import.php";
+?>
 	<title>User Registration</title>
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">>
-	<link rel="stylesheet" href="css/bootstrap-social.css">
-	<link rel="stylesheet" href="css/bootstrap-select.css">
-	<link rel="stylesheet" href="css/fileinput.min.css">
-	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
-	<link rel="stylesheet" href="css/style1.css">
-<script type="text/javascript" src="js/jquery-1.11.3-jquery.min.js"></script>
-<script type="text/javascript" src="js/validation.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
 <script type="text/javascript">
 function valid()
 {
@@ -61,8 +49,9 @@ return true;
 		<div class="content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
+					<br/><br/>
 					<div class="col-md-12">
-						<h2 class="page-title">Student Registration </h2>
+						<h2 class="page-title">Client Registration </h2>
 
 						<div class="row">
 							<div class="col-md-12">
@@ -74,9 +63,9 @@ return true;
 										
 
 <div class="form-group">
-<label class="col-sm-2 control-label"> Registration No : </label>
+<label class="col-sm-2 control-label"> Social Security No : </label>
 <div class="col-sm-8">
-<input type="text" name="regno" id="regno"  class="form-control" required="required" >
+<input type="text" name="ssn" id="styling"  class="form-control" required="required" >
 </div>
 </div>
 
@@ -84,21 +73,21 @@ return true;
 <div class="form-group">
 <label class="col-sm-2 control-label">First Name : </label>
 <div class="col-sm-8">
-<input type="text" name="fname" id="fname"  class="form-control" required="required" >
+<input type="text" name="fname" id="styling"  class="form-control" required="required" >
 </div>
 </div>
 
 <div class="form-group">
 <label class="col-sm-2 control-label">Middle Name : </label>
 <div class="col-sm-8">
-<input type="text" name="mname" id="mname"  class="form-control">
+<input type="text" name="mname" id="styling"  class="form-control">
 </div>
 </div>
 
 <div class="form-group">
 <label class="col-sm-2 control-label">Last Name : </label>
 <div class="col-sm-8">
-<input type="text" name="lname" id="lname"  class="form-control" required="required">
+<input type="text" name="lname" id="styling"  class="form-control" required="required">
 </div>
 </div>
 
@@ -117,7 +106,7 @@ return true;
 <div class="form-group">
 <label class="col-sm-2 control-label">Contact No : </label>
 <div class="col-sm-8">
-<input type="text" name="contact" id="contact"  class="form-control" required="required">
+<input type="text" name="contact" id="styling"  class="form-control" required="required">
 </div>
 </div>
 
@@ -125,7 +114,7 @@ return true;
 <div class="form-group">
 <label class="col-sm-2 control-label">Email id: </label>
 <div class="col-sm-8">
-<input type="email" name="email" id="email"  class="form-control" onBlur="checkAvailability()" required="required">
+<input type="email" name="email" id="email"  class="form-control styling" onBlur="checkAvailability()" required="required">
 <span id="user-availability-status" style="font-size:12px;"></span>
 </div>
 </div>
@@ -133,7 +122,7 @@ return true;
 <div class="form-group">
 <label class="col-sm-2 control-label">Password: </label>
 <div class="col-sm-8">
-<input type="password" name="password" id="password"  class="form-control" required="required">
+<input type="password" name="password" id="styling"  class="form-control" required="required">
 </div>
 </div>
 
@@ -141,7 +130,7 @@ return true;
 <div class="form-group">
 <label class="col-sm-2 control-label">Confirm Password : </label>
 <div class="col-sm-8">
-<input type="password" name="cpassword" id="cpassword"  class="form-control" required="required">
+<input type="password" name="cpassword" id="styling"  class="form-control" required="required">
 </div>
 </div>
 						
@@ -181,23 +170,21 @@ return true;
 </body>
 	<script>
 function checkAvailability() {
-
-$("#loaderIcon").show();
-jQuery.ajax({
-url: "check_availability.php",
-data:'emailid='+$("#email").val(),
-type: "POST",
-success:function(data){
-$("#user-availability-status").html(data);
-$("#loaderIcon").hide();
-},
-error:function ()
-{
-event.preventDefault();
-alert('error');
-}
-});
-}
+	$("#loaderIcon").show();
+		jQuery.ajax({
+			url: "check_availability.php",
+			data:'emailid='+$("#email").val(),
+			type: "POST",
+			success:function(data){
+					$("#user-availability-status").html(data);
+					$("#loaderIcon").hide();
+			},
+			error:function (){
+				event.preventDefault();
+				alert('error' + 'If you think there is a problem, contact us immediately');
+			}
+		});
+	}
 </script>
 
 </html>
