@@ -5,6 +5,7 @@
 -- Host: 127.0.0.1
 -- Generation Time: Dec 24, 2021 at 10:56 AM
 -- Server version: 10.4.21-MariaDB
+
 -- PHP Version: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
