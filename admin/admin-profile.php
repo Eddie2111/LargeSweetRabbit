@@ -4,6 +4,7 @@ include('includes/config.php');
 include('includes/checklogin.php');
 check_login();
 if($_POST['update'])
+
 {
 $email=$_POST['emailid'];
 $aid=$_SESSION['id'];
