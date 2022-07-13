@@ -3,6 +3,7 @@ session_start();
 include('includes/config.php');
 include('includes/checklogin.php');
 check_login();
+
 //code for add courses
 if($_POST['submit'])
 {
