@@ -5,8 +5,6 @@ include('includes/checklogin.php');
 check_login();
 //code for registration
 
-
-
 if(isset($_POST['submit']))
 {
 	$Guest_ID = $_POST['Guest_ID'];
